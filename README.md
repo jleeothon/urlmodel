@@ -108,6 +108,8 @@ class Digimon(UrlModelMixin, models.Model):
 
 If the default "CRUD" system —which is actually "list, create, detail, update, delete"— do not work for you, you can try out `UrlModel` and `UrlModelMixin` (plus their lazy counterparts).
 
+**Note: CruddUrlModel provides implementation for `get_absolute_url` too, and defaults to `get_detail_url`.**
+
 ### Action URLs
 
 These are URLs based on "action names", such as "detail", "create", etc. For convention, ease and readability, you should try to stick to these methods.
