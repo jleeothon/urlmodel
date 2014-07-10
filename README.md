@@ -1,6 +1,6 @@
 # django-urlmodel
 
-A framework for creating rich URLs for a Django model.
+Creating rich and dry URLs for a Django model.
 
 ## Introduction
 
