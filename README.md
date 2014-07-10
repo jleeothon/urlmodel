@@ -112,20 +112,54 @@ If the default "CRUD" system —which is actually "list, create, detail, update,
 
 These are URLs based on "action names", such as "detail", "create", etc. For convention, ease and readability, you should try to stick to these methods.
 
-```
-def get_defenestrate_url(self):
-    self.get_instance_action_url("defenestrate")
+```Python
 
-@classmethod
-def get_last_defenestrated(cls):
-    cls.get_class_action_url("last-defenestrated")
+class TownPerson(UrlModelMixin, Model):
+
+    def get_defenestrate_url(self):
+        self.get_instance_action_url("defenestrate")
+        # expects townperson-defenestrate to exist.
+
+    @classmethod
+    def get_last_defenestrated(cls):
+        cls.get_class_action_url("last-defenestrated")
+        # expects townperson-last-defenestrated to exist.
 ```
+
+### Extra information for URL
 
 If you need to rely on more information than a single pk or slug, use `*args` and `**kwargs` to pass on this information to the `urlresolvers.reverse` method.
+
+```Python
+class Town(CrudUrlModelMixin, Model):
+    
+    def get_detail_url(self):
+        super().get_detail_url(region_slug=self.region.sluggified_name)
+```
+
+The above example does also work similarly for the simpler `UrlModelMixin` class.
+
+Be careful!,
+
+> Instance url methods (`get_instance_url` and `get_instance_action_url`) always pass the pk or slug argument to `urlresolvers.reverse`.
 
 ### Custom URL names
 
 If you want to provide a custom URL instead of an automatic `modelname-action`, use `@classmethod get_class_url(cls, url_name, *args, **kwargs)` and `get_instance_url(self, url_name, *args, **kwargs)`.
+
+### Format for action URLs
+
+**Note: this section is subject to change in upcoming versions.**
+
+Action URLs are formatted `modelname-action` by default. To change this format, override the `action_url_formatter` object or provide a `format_action` class method. If you provide the latter method, the former object will be ignored.
+
+```Python
+action_url_formatter = lambda model, action: '%s-%s' % (model, action)
+# this signature will override action_url_formatter
+# @classmethod
+# def format_action(cls, modelname, action):
+#     pass
+```
 
 ## Proposals
 
@@ -134,5 +168,7 @@ If you want to provide a custom URL instead of an automatic `modelname-action`, 
 
 ## Resources
 
-- [Django slug fields](https://docs.djangoproject.com/en/dev/ref/models/fields/#slugfield)
-- [Django class-based views](https://docs.djangoproject.com/en/dev/topics/class-based-views/)
+- [url template tag](https://docs.djangoproject.com/en/dev/ref/templates/builtins/#url)
+- [Reversing URLs](https://docs.djangoproject.com/en/dev/ref/urlresolvers/#reverse)
+- [Slug fields](https://docs.djangoproject.com/en/dev/ref/models/fields/#slugfield)
+- [Class-based views](https://docs.djangoproject.com/en/dev/topics/class-based-views/)
