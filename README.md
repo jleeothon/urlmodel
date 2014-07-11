@@ -1,4 +1,4 @@
-# django-urlmodel
+# urlmodel
 
 Creating rich and dry URLs for a Django model.
 
