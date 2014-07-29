@@ -119,13 +119,13 @@ These are URLs based on "action names", such as "detail", "create", etc. For con
 class TownPerson(UrlModelMixin, Model):
 
     def get_defenestrate_url(self):
-        self.get_instance_action_url("defenestrate")
         # expects townperson-defenestrate to exist.
+        return self.get_instance_action_url("defenestrate")
 
     @classmethod
     def get_last_defenestrated(cls):
-        cls.get_class_action_url("last-defenestrated")
         # expects townperson-last-defenestrated to exist.
+        return cls.get_class_action_url("last-defenestrated")
 ```
 
 ### Extra information for URL
@@ -136,7 +136,7 @@ If you need to rely on more information than a single pk or slug, use `*args` an
 class Town(CrudUrlModelMixin, Model):
     
     def get_detail_url(self):
-        super().get_detail_url(region_slug=self.region.sluggified_name)
+        return super().get_detail_url(region_slug=self.region.sluggified_name)
 ```
 
 The above example does also work similarly for the simpler `UrlModelMixin` class.
