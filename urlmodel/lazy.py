@@ -1,6 +1,6 @@
 from django.db import models
 
-from .base import UrlModelMixin, 
+from .base import UrlModelMixin
 
 
 __all__ = (
