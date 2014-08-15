@@ -8,6 +8,8 @@ Creating rich and dry URLs for a Django model.
 Introduction
 ------------
 
+    **Disclaimer.** Until release of version 1.0, API could significantly change.
+
 As I started using class-based views for Django, I understood what the `get_absolute_url` method was about. Then I encountered the problem of using URLs that required more than once piece of information from a model instance, let's say, not a single primary key or slug. That's a bit abstract, take:
 
 - ``/regions/cat-cat-province/towns/mieaou/``
@@ -51,21 +53,19 @@ The latter one is not very DRY_. So I thought I could start writing a ``get_upda
 I decided to write a smart and flexible URL system so that the next time I would need a list-create-detail-update-delete set of URLs, things would be as easy as adding a mixin to the inheritance tree of the model.
 
 ------------
-Requirements
+Installation
 ------------
 
-I know, my requirements suck.
+I know, my requirements suck:
 
 - Python 3
 - Django 1.6
 
 I'm not sure if this app will not work on previous versions of Django, but I think I will not with Python 2.
 
----------------
-Getting started
----------------
+To install the latest version, run the command::
 
-**TO DO**
+    pip install git+git://github.com/jleeothon/urlmodel.git
 
 ----------
 How to use
@@ -84,7 +84,6 @@ Using the default CRUD urls is as easy as extending funcionality as a mixin::
 
     class Town(CrudUrlModel):
         pass
-
 
 The former example will create a set of five methods (class-level: list, create; instance-level: detail, update, delete) that expect an URL based on the model name and the name of the "action". Also, these expect an URL keyword argument called "pk".
 
@@ -114,15 +113,17 @@ and `slug_field_name`, to match the model slug::
 
 ..
 
-    Try out the lazy counterparts, `LazyCrudUrlModelMixin` and `LazyCrudUrlModel`!
+    Try out their lazy equivalents, `LazyCrudUrlModelMixin` and `LazyCrudUrlModel`!
+
+..
+
+    **Note.** CrudUrlModel provides implementation for `get_absolute_url` too, and defaults to `get_detail_url`.
 
 --------------
 Advanced stuff
 --------------
 
-If the default "CRUD" system —which is actually "list, create, detail, update, delete"— do not work for you, you can try out `UrlModel` and `UrlModelMixin` (plus their lazy counterparts).
-
-**Note: CruddUrlModel provides implementation for `get_absolute_url` too, and defaults to `get_detail_url`.**
+If the default "CRUD" system (here: list, create, detail, update, delete) do not work for you, you can try out `UrlModel` and `UrlModelMixin` (plus their lazy counterparts).
 
 ~~~~~~~~~~~
 Action URLs
