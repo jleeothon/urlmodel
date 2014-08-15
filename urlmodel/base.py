@@ -2,6 +2,9 @@ from django.db import models
 from django.core.urlresolvers import reverse
 
 
+__all__ = ('UrlModelMixin', 'UrlModel', 'CrudUrlModelMixin', 'CrudUrlModel')
+
+
 class UrlModelMixin(object):
     """
     Provides methods for the URLs of basic actions such as searching,

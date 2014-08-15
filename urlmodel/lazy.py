@@ -1,9 +1,17 @@
 from django.db import models
 
-import urlmodel.base
+from .base import UrlModelMixin, 
 
 
-class LazyUrlModelMixin(urlmodel.base.UrlModelMixin):
+__all__ = (
+    'LazyUrlModelMixin', 
+    'LazyUrlModel', 
+    'LazyCrudUrlModelMixin', 
+    'LazyCrudUrlModel',
+)
+
+
+class LazyUrlModelMixin(UrlModelMixin):
 
     @classmethod
     def get_class_url_lazy(cls, url_name, attr_name, *args, **kwargs):
