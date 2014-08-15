@@ -121,7 +121,7 @@ and ``slug_field_name``, to match the model slug::
 
 ..
 
-    **Note.** CrudUrlModel provides implementation for ``get_absolute_url`` too, and defaults to `get_detail_url`.
+    **Note.** CrudUrlModel provides implementation for ``get_absolute_url`` too, and defaults to ``get_detail_url``.
 
 --------------
 Advanced stuff
@@ -161,7 +161,7 @@ The above example does also work similarly for the simpler ``UrlModelMixin`` cla
 
 Be careful!,
 
-    Instance url methods (``get_instance_url`` and ``get_instance_action_url``) always pass the pk or slug argument to ``urlresolvers.reverse``.
+    instance url methods (``get_instance_url`` and ``get_instance_action_url``) always pass the pk or slug argument to ``urlresolvers.reverse``.
 
 ~~~~~~~~~~~~~~~~
 Custom URL names
