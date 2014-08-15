@@ -91,7 +91,7 @@ Using the default CRUD urls is as easy as extending funcionality as a mixin::
 
 The former example will create a set of five methods (class-level: list, create; instance-level: detail, update, delete) that expect an URL based on the model name and the name of the "action". Also, these expect an URL keyword argument called "pk".
 
-In order to use a slug field, you should override `slug_kwarg_name` to match the URL kwarg::
+In order to use a slug field, you should override ``slug_kwarg_name`` to match the URL kwarg::
 
     # urls.py
 
@@ -104,7 +104,7 @@ In order to use a slug field, you should override `slug_kwarg_name` to match the
         # ...
     )
 
-and `slug_field_name`, to match the model slug::
+and ``slug_field_name``, to match the model slug::
 
     # models.py
 
@@ -117,17 +117,17 @@ and `slug_field_name`, to match the model slug::
 
 ..
 
-    Try out their lazy equivalents, `LazyCrudUrlModelMixin` and `LazyCrudUrlModel`!
+    Try out their lazy equivalents, ``LazyCrudUrlModelMixin`` and ``LazyCrudUrlModel``!
 
 ..
 
-    **Note.** CrudUrlModel provides implementation for `get_absolute_url` too, and defaults to `get_detail_url`.
+    **Note.** CrudUrlModel provides implementation for ``get_absolute_url`` too, and defaults to `get_detail_url`.
 
 --------------
 Advanced stuff
 --------------
 
-If the default "CRUD" system (here: list, create, detail, update, delete) do not work for you, you can try out `UrlModel` and `UrlModelMixin` (plus their lazy counterparts).
+If the default "CRUD" system (here: list, create, detail, update, delete) do not work for you, you can try out ``UrlModel`` and ``UrlModelMixin`` (plus their lazy counterparts).
 
 ~~~~~~~~~~~
 Action URLs
@@ -150,24 +150,24 @@ These are URLs based on "action names", such as "detail", "create", etc. For con
 Extra information for URL
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you need to rely on more information than a single pk or slug, use `*args` and `**kwargs` to pass on this information to the `urlresolvers.reverse` method::
+If you need to rely on more information than a single pk or slug, use ``*args`` and ``**kwargs`` to pass on this information to the ``urlresolvers.reverse`` method::
 
     class Town(CrudUrlModelMixin, Model):
         
         def get_detail_url(self):
             return super().get_detail_url(region_slug=self.region.sluggified_name)
 
-The above example does also work similarly for the simpler `UrlModelMixin` class.
+The above example does also work similarly for the simpler ``UrlModelMixin`` class.
 
 Be careful!,
 
-    Instance url methods (`get_instance_url` and `get_instance_action_url`) always pass the pk or slug argument to `urlresolvers.reverse`.
+    Instance url methods (``get_instance_url`` and ``get_instance_action_url``) always pass the pk or slug argument to ``urlresolvers.reverse``.
 
 ~~~~~~~~~~~~~~~~
 Custom URL names
 ~~~~~~~~~~~~~~~~
 
-If you want to provide a custom URL instead of an automatic `modelname-action`, use `@classmethod get_class_url(cls, url_name, *args, **kwargs)` and `get_instance_url(self, url_name, *args, **kwargs)`.
+If you want to provide a custom URL instead of an automatic ``modelname-action``, use ``@classmethod get_class_url(cls, url_name, *args, **kwargs)`` and ``get_instance_url(self, url_name, *args, **kwargs)``.
 
 ~~~~~~~~~~~~~~~~~~~~~~
 Format for action URLs
@@ -175,7 +175,7 @@ Format for action URLs
 
 **Note:** this section is subject to change in upcoming versions.
 
-Action URLs are formatted `modelname-action` by default. To change this format, override the `action_url_formatter` object or provide a `format_action` class method. If you provide the latter (method), the former (object) will be ignored::
+Action URLs are formatted ``modelname-action`` by default. To change this format, override the ``action_url_formatter`` object or provide a ``format_action`` class method. If you provide the latter (method), the former (object) will be ignored::
 
     action_url_formatter = lambda model, action: '%s-%s' % (model, action)
     # this signature will override action_url_formatter
