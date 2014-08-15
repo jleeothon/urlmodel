@@ -41,8 +41,12 @@ What if you provide a link to the edit and delete sections? You'll probably go f
 With something in your template like::
 
     # html
-    {% url 'town-update' region_slug=town.region.name_slug town_slug=town.name_slug %}
+    
+    <a href="{% url 'town-update' region_slug=town.region.name_slug town_slug=town.name_slug %}">
+      Update this town
+    </a>
 
+..
 
     Note: I mostly use "update" for internal stuff for convention and readability ("update" has the length as "create" and "delete" and "detail" and "search"), but I use "edit" for usability when it'll be read by the end-user.
 
