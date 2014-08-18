@@ -32,7 +32,7 @@ What if you provide a link to the edit and delete sections? You'll probably go f
     urlpatterns = patterns('',
         # ...
         url(
-            '^regions/(?P<region_slug>[a-zA-Z0-9-]+)/towns/(?P<town_slug>[a-zA-Z0-9-]+)/edit/?$',
+            '^regions/(?P<region_slug>[\w-]+)/towns/(?P<town_slug>[\w-]+)/edit/?$',
             name='town-update'
         ),
         # ...
@@ -98,7 +98,7 @@ In order to use a slug field, you should override ``slug_kwarg_name`` to match t
     urlpatterns = patterns('',
         # ...
         url(
-            '^digimons/(?P<name>[a-zA-Z0-9-]+)/?$',
+            '^digimons/(?P<name>[\w-]+)/?$',
             name='digimon-detail'
         ),
         # ...
