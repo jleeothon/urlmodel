@@ -67,6 +67,10 @@ I know, my requirements suck:
 
 I'm not sure if this app will not work on previous versions of Django, but I think I will not with Python 2.
 
+To install version 0.1::
+
+    pip install django-urlmodel
+
 To install the latest version, run the command::
 
     pip install git+git://github.com/jleeothon/urlmodel.git
