@@ -6,61 +6,6 @@ __all__ = ('UrlModelMixin', 'UrlModel', 'CrudUrlModelMixin', 'CrudUrlModel')
 
 
 class UrlModelMixin(object):
-    """
-    Provides methods for the URLs of basic actions such as searching,
-    creating, inspecting (detail), updating, deleting.
-    
-    If a model instance is identified by pk, ``slug_field_name`` should be left
-    blank, otherwise, give the name of the field.
-    
-    # Slug field name and slug kwarg name.
-
-    The name of the argument in the URL that identifies this slug or the
-    primary key is set in ``slug_kwarg_name``. A pk specified by an anonymous
-    argument is not supported.
-    Usually, both variables should be set to the same value.
-    E.g.
-    ````
-    # urls.py
-    urlpatterns('',
-        url(
-            r'pokemons/(?P<hoenn_pokedex_number>\d+)/$'),
-            views.pokemon_detail_by_pokedex_number,
-            name='pokemon-hoenn'
-        ),
-        url(
-            r'pokemons/(?<pk>\d+)/?'),  # National Pokédex number
-            views.pokemon_detail_by_pk,
-            name='pokemon-pk'
-        )
-    )
-
-    class
-    ```` 
-
-    # Arguments
-
-    The first argument, optional, is ``url_name``. By default this will be:
-    - search: 'modelname-search'
-    - create: 'modelname-create'
-    - detail: 'modelname'
-    - update: 'modelname-update'
-    - delete: 'modelname-delete'
-    
-    Any extra arguments to be passed as ``*args`` and ``**kwargs``.
-
-    The create and search urls can be called from the class instead of and
-    instance.
-
-    To make custom instance urls, use ``get_instance_url`` and to make
-    custom class urls, use ``get_class_url``.
-    Usage: self.get_instance_url('hide', )
-    
-    Note: all methods are lazily evaluated and stored. Except for
-    ``get_absolute_url``, though, one usually expects the same value to be
-    returned by ``get_absolute_url`` and ``detail_url``, the latter accepts
-    argument lists and keyword arguements.
-    """
 
     slug_kwarg_name = None
     slug_field_name = None
