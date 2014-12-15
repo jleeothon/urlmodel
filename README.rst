@@ -192,7 +192,6 @@ Proposals
 ---------
 
 - Provide support for Python 2, probably through six_.
-- Submit this project to PyPI.
 
 .. _six: https://pypi.python.org/pypi/six/1.7.3
 
