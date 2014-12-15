@@ -4,6 +4,20 @@ urlmodel
 
 Creating rich and dry URLs for a Django model.
 
+|version| |python_version| |downloads|
+
+.. |version| image:: https://pypip.in/version/django-urlmodel/badge.svg?style=flat
+    :target: https://pypi.python.org/pypi/django-urlmodel/
+    :alt: Latest release
+
+.. |python_version| image:: https://pypip.in/py_versions/django-urlmodel/badge.svg?style=flat
+    :target: https://pypi.python.org/pypi/django-urlmodel/
+    :alt: Python versions
+    
+.. |downloads| image:: https://pypip.in/download/django-urlmodel/badge.svg?style=flat
+    :target: https://pypi.python.org/pypi/django-urlmodel/
+    :alt: Downloads
+
 ------------
 Introduction
 ------------
@@ -195,9 +209,9 @@ Proposals
 
 .. _six: https://pypi.python.org/pypi/six/1.7.3
 
----------
-Resources
----------
+---------------
+Further reading
+---------------
 
 - `url template tag`_
 - `Reversing URLs`_
