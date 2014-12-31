@@ -133,13 +133,19 @@ and ``slug_field_name``, to match the model slug::
         slug_kwarg_name = 'name'
         slug_field_name = 'sluggified_name'
 
-..
+Try out their lazy equivalents, ``LazyCrudUrlModelMixin`` and ``LazyCrudUrlModel``!
 
-    Try out their lazy equivalents, ``LazyCrudUrlModelMixin`` and ``LazyCrudUrlModel``!
+**Note:** CrudUrlModel provides implementation for ``get_absolute_url`` too, and defaults to ``get_detail_url``.
 
-..
+Now, use your url from your templates like:
 
-    **Note.** CrudUrlModel provides implementation for ``get_absolute_url`` too, and defaults to ``get_detail_url``.
+    <ul>
+    {% for digimon in digimons %}
+        <li>
+            <a href="{{ digimon.detail_url }}">{{ digimon.name }}</a>
+        </li>
+    {% endfor %}
+    </ul>
 
 --------------
 Advanced stuff
