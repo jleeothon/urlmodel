@@ -137,7 +137,7 @@ Try out their lazy equivalents, ``LazyCrudUrlModelMixin`` and ``LazyCrudUrlModel
 
 **Note:** CrudUrlModel provides implementation for ``get_absolute_url`` too, and defaults to ``get_detail_url``.
 
-Now, use your url from your templates like:
+Now, use your url from your templates like::
 
     <ul>
     {% for digimon in digimons %}
