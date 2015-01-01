@@ -4,6 +4,20 @@ urlmodel
 
 Creating rich and dry URLs for a Django model.
 
+|version| |python_version| |downloads|
+
+.. |version| image:: https://pypip.in/version/django-urlmodel/badge.svg?style=flat
+    :target: https://pypi.python.org/pypi/django-urlmodel/
+    :alt: Latest release
+
+.. |python_version| image:: https://pypip.in/py_versions/django-urlmodel/badge.svg?style=flat
+    :target: https://pypi.python.org/pypi/django-urlmodel/
+    :alt: Python versions
+    
+.. |downloads| image:: https://pypip.in/download/django-urlmodel/badge.svg?style=flat
+    :target: https://pypi.python.org/pypi/django-urlmodel/
+    :alt: Downloads
+
 ------------
 Introduction
 ------------
@@ -119,13 +133,19 @@ and ``slug_field_name``, to match the model slug::
         slug_kwarg_name = 'name'
         slug_field_name = 'sluggified_name'
 
-..
+Try out their lazy equivalents, ``LazyCrudUrlModelMixin`` and ``LazyCrudUrlModel``!
 
-    Try out their lazy equivalents, ``LazyCrudUrlModelMixin`` and ``LazyCrudUrlModel``!
+**Note:** CrudUrlModel provides implementation for ``get_absolute_url`` too, and defaults to ``get_detail_url``.
 
-..
+Now, use your url from your templates like::
 
-    **Note.** CrudUrlModel provides implementation for ``get_absolute_url`` too, and defaults to ``get_detail_url``.
+    <ul>
+    {% for digimon in digimons %}
+        <li>
+            <a href="{{ digimon.detail_url }}">{{ digimon.name }}</a>
+        </li>
+    {% endfor %}
+    </ul>
 
 --------------
 Advanced stuff
@@ -192,13 +212,12 @@ Proposals
 ---------
 
 - Provide support for Python 2, probably through six_.
-- Submit this project to PyPI.
 
 .. _six: https://pypi.python.org/pypi/six/1.7.3
 
----------
-Resources
----------
+---------------
+Further reading
+---------------
 
 - `url template tag`_
 - `Reversing URLs`_
