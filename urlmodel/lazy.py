@@ -1,17 +1,15 @@
 from django.db import models
 
-from .base import UrlModelMixin
+from .base import UrlModel
 
 
 __all__ = (
-    'LazyUrlModelMixin', 
-    'LazyUrlModel', 
-    'LazyCrudUrlModelMixin', 
+    'LazyUrlModel',
     'LazyCrudUrlModel',
 )
 
 
-class LazyUrlModelMixin(UrlModelMixin):
+class LazyUrlModel(UrlModel):
 
     @classmethod
     def get_class_url_lazy(cls, url_name, attr_name, *args, **kwargs):
@@ -52,11 +50,7 @@ class LazyUrlModelMixin(UrlModelMixin):
         return self.get_instance_url_lazy(url_name, attr_name, *args, **kwargs)
 
 
-class LazyUrlModel(LazyUrlModelMixin, models.Model):
-    pass
-
-
-class LazyCrudUrlModelMixin(LazyUrlModelMixin):
+class LazyCrudUrlModel(LazyUrlModel):
     """
     All default provided methods are lazily evaluated.
     """
@@ -89,7 +83,3 @@ class LazyCrudUrlModelMixin(LazyUrlModelMixin):
 
     def delete_url(self, *args, **kwargs):
         return self.get_instance_action_url_lazy('delete', *args, **kwargs)
-
-
-class LazyCrudUrlModel(LazyCrudUrlModelMixin, models.Model):
-    pass
